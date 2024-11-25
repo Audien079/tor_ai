@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-6@_*lm^j+9@qe%@1q!&i@e+j&!!bmz3^5nv6fj0@9ymzdoy29q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG", default=False)
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["http://54.183.29.97:9093"]
+CSRF_TRUSTED_ORIGINS = ["http://54.151.119.174:9093"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
