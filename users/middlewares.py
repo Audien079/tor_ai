@@ -1,8 +1,8 @@
+import re
 from django.conf import settings
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.utils.deprecation import MiddlewareMixin
-import re
 
 
 EXEMPT_URLS = [re.compile(settings.LOGIN_URL.lstrip('/'))]
@@ -42,4 +42,3 @@ class LoginRequiredMiddleware(MiddlewareMixin):
         else:
             # Trying to access any page as a non authenticated user
             return redirect(f"{settings.LOGIN_URL}?next=/{path}")
-

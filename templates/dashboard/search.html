@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .search-container {
+            margin-top: 100px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            padding: 10px 15px;
+            background-color: white;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        }
+
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .search-button:hover {
+            background-color: #357ae8;
+        }
+
+        .results-container {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .result-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a0dab;
+        }
+
+        .result-title:hover {
+            text-decoration: underline;
+        }
+
+        .result-description {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .error-message {
+            background-color: #ea9baf;
+            height: 28px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <form method="get" action="" id="searchForm" autocomplete="off">
+            <div class="search-box">
+                <input type="text" name="q" id="query" class="search-input" placeholder="Search..." value="{{ query|default:'' }}" required>
+                <button type="submit" class="search-button">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="results-container" id="results">
+        <h2>Results:</h2>
+        {% if blocked %}
+            <div class="error-message">
+                <p style="color: #ffffff; padding: 6px;" class="result-description">Facing some technical errors please try after some time</p>
+            </div>
+        {% endif %}
+        {% if data %}
+            <div class="result-item">
+                {% for result in data %}
+                    <a href="{{result.url}}" target="_blank" class="result-title">{{result.title}}</a>
+                    <p class="result-description">{{result.description}}</p>
+                {% endfor %}
+            </div>
+        {% else %}
+            {% if not blocked %}
+                <p>No results found.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>

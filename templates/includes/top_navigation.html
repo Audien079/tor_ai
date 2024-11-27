@@ -43,6 +43,13 @@
                         <span key="t-dashboards">Home</span>
                     </a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link arrow-none
+                        {% if 'user_ips' in url_name %}active{% endif %}" href="{% url 'user_ips' %}" id="topnav-dashboard"
+                       role="button">
+                        <span key="t-dashboards">User IP's</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

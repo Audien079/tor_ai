@@ -42,3 +42,28 @@ class User(AbstractUser, BaseModel):
         return f"{self.username}"
 
     objects = MyUserManager()
+
+
+class UserIP(BaseModel):
+    """
+    User IP model
+    """
+    ip_address = models.GenericIPAddressField(unique=True)
+    request_count = models.PositiveIntegerField(default=0)
+    is_blocked = models.BooleanField(default=False)
+    last_request_time = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.ip_address} - {self.request_count}"
+
+
+class SearchLog(models.Model):
+    """
+    Search log model
+    """
+    user_ip = models.ForeignKey(UserIP, on_delete=models.CASCADE, related_name='search_logs')
+    search_term = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user_ip.ip_address} - {self.search_term} - {self.timestamp}"
