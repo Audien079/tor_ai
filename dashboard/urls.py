@@ -1,5 +1,5 @@
 from django.urls import path
-from dashboard.views import HomeView, search_view, SearchView
+from dashboard.views import HomeView, SearchView
 
 
 urlpatterns = [

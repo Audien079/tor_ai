@@ -3,10 +3,11 @@ from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 from users.models import UserIP
 
 
-class UsersIpListView(ListView):
+class UsersIpListView(LoginRequiredMixin, ListView):
     """
     Users Ip List View
     """
