@@ -52,3 +52,18 @@ class SearchView(TemplateView):
             context['data'] = filtered_data
             context['query'] = query
         return context
+
+
+class CustomersView(TemplateView):
+    """
+    Customers page
+    """
+    template_name = "dashboard/customers.html"
+
+
+class SettingsView(TemplateView):
+    """
+    Settings page
+    """
+    template_name = "dashboard/settings.html"
+

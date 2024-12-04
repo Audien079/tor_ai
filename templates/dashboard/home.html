@@ -2,188 +2,114 @@
 {% load static %}
 {% load custom_filters %}
 {% block header %}
-<title>Clients</title>
+<title>Dashboard</title>
 {% endblock %}
 {% block style %}
 <link href="{% static 'assets/css/user-profile.css' %}" rel="stylesheet" type="text/css" />
 <style>
-    .filter-block__right .side-by-side {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
-
-    .task-form {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .table-design {
-        background-color: #eceff6;
-    }
-
-
-/* Blur effect on background when modal is open */
-.content.blur {
-    filter: blur(5px);
+.dashboard {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 20px;
 }
-
-.custom-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
+.card {
     background-color: #fff;
-    width: 500px;
-    max-width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 }
-
-.modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 10px;
+.card-purple {
+    background-color: #4e2995;
+    color: #fff;
 }
-
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
-
-.form-group {
-    display: flex;
-    flex-direction: column;
+.card h1 {
+    font-size: 2.5rem;
+    margin: 0;
 }
-
-.name-fields {
+.card span {
+    display: block;
+    margin-top: 10px;
+    color: #888;
+}
+.stats {
+    font-size: 0.9rem;
+    margin-top: 20px;
+    color: #4CAF50;
+}
+.chart {
+    margin-top: 20px;
+    height: 100px;
+    background-color: #eaeaea;
+    border-radius: 5px;
+}
+.card .sub-header {
+    color: #888;
+    font-size: 0.9rem;
+}
+.card .value {
     display: flex;
+    align-items: baseline;
     gap: 10px;
 }
-
-.input-field {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.card .value h1 {
+    margin: 0;
 }
-
-.input-with-icon {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.icon {
-    position: absolute;
-    left: 10px;
-    font-size: 16px;
-}
-
-.input-with-icon .input-field {
-    padding-left: 10px;
-}
-
-.modal-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #e0e0e0;
-    padding-top: 10px;
-}
-
-.footer-buttons .btn {
-    margin-left: 5px;
-}
-
-.btn {
-    padding: 10px 15px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.cancel-btn {
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-.save-btn {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.custom-btn {
-    background-color: #576f9a;
-}
-
-.custom-btn:hover {
-    background-color: #3a4b68;
-}
-
-.survey-dropdown select {
-  background-color: #ffffff;
-  color: #202020;
-  border-radius : 7px;
-  padding: 10px;
-  width: 185px;
-  border: none;
-  font-size: 15px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-  -webkit-appearance: button;
-  appearance: button;
-  outline: none;
-}
-
-.survey-dropdown::before {
-  content: "\f13a";
-  font-family: FontAwesome;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  text-align: center;
-  font-size: 28px;
-  line-height: 45px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.1);
-  pointer-events: none;
-}
-
-.survey-dropdown:hover::before {
-  color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.survey-dropdown select option {
-  padding: 30px;
+.card .small-value {
+    font-size: 1rem;
+    font-weight: bold;
 }
 </style>
 {% endblock %}
 {% block content %}
 <div class="main-content">
     <div class="container-fluid" style="margin-top: 135px;">
-        <h3>Home Page</h3>
-    </div></div>
+        <div class="dashboard">
+        <!-- Total Sales Card -->
+        <div class="card card-purple">
+            <h3>Total Sales</h3>
+            <div class="value">
+                <h1>$74,958.49</h1>
+                <span>View Report</span>
+            </div>
+            <span>$7,395.91 in last month</span>
+            <h3 class="sub-header">This week so far</h3>
+            <h1>$1,338.72</h1>
+            <span class="stats">↑ 4.63% vs. last week</span>
+        </div>
+
+        <!-- Average Order Card -->
+        <div class="card">
+            <h3>Average Order <span class="sub-header">Unique Chats</span></h3>
+            <div class="value">
+                <h1>$463.35</h1>
+                <span class="small-value">XXXX.XX</span>
+            </div>
+            <span class="stats">↑ 4.63% vs. last week</span>
+            <div class="chart"></div>
+        </div>
+
+        <!-- Orders Card -->
+        <div class="card">
+            <h3>Orders <span class="sub-header">Image Replies</span></h3>
+            <h1>329</h1>
+            <span class="stats">↑ 4.63% vs. last week</span>
+            <div class="chart"></div>
+        </div>
+
+        <!-- Customers Card -->
+        <div class="card">
+            <h3>Customers <span class="sub-header">Text Replies</span></h3>
+            <h1>194</h1>
+            <span class="stats">↑ 4.63% vs. last week</span>
+            <div class="chart"></div>
+        </div>
+    </div>
+    </div>
+</div>
 {% endblock %}
 {% block script %}
 <script>

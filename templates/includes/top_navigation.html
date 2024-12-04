@@ -40,7 +40,7 @@
                     <a class="nav-link arrow-none
                         {% if 'home' in url_name %}active{% endif %}" href="{% url 'home' %}" id="topnav-dashboard"
                        role="button">
-                        <span key="t-dashboards">Home</span>
+                        <span key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -48,6 +48,20 @@
                         {% if 'user_ips' in url_name %}active{% endif %}" href="{% url 'user_ips' %}" id="topnav-dashboard"
                        role="button">
                         <span key="t-dashboards">User IP's</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link arrow-none
+                        {% if 'customers' in url_name %}active{% endif %}" href="{% url 'customers' %}" id="topnav-dashboard"
+                       role="button">
+                        <span key="t-dashboards">Customers</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link arrow-none
+                        {% if 'settings' in url_name %}active{% endif %}" href="{% url 'settings' %}" id="topnav-dashboard"
+                       role="button">
+                        <span key="t-dashboards">Settings</span>
                     </a>
                 </li>
             </ul>
