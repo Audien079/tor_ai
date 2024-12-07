@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.timezone import now
 
 from users.managers import MyUserManager
 
@@ -62,8 +63,8 @@ class SearchLog(models.Model):
     Search log model
     """
     user_ip = models.ForeignKey(UserIP, on_delete=models.CASCADE, related_name='search_logs')
-    search_term = models.TextField()
-    timestamp = models.DateTimeField(auto_now_add=True)
+    keyword = models.CharField(max_length=255)
+    last_searched = models.DateTimeField(default=now)
 
     def __str__(self):
-        return f"{self.user_ip.ip_address} - {self.search_term} - {self.timestamp}"
+        return self.keyword

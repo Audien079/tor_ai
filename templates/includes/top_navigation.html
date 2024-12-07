@@ -43,25 +43,32 @@
                         <span key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
+<!--                <li class="nav-item dropdown">-->
+<!--                    <a class="nav-link arrow-none-->
+<!--                        {% if 'user_ips' in url_name %}active{% endif %}" href="{% url 'user_ips' %}" id="topnav-dashboard"-->
+<!--                       role="button">-->
+<!--                        <span key="t-dashboards">User IP's</span>-->
+<!--                    </a>-->
+<!--                </li>-->
                 <li class="nav-item dropdown">
                     <a class="nav-link arrow-none
-                        {% if 'user_ips' in url_name %}active{% endif %}" href="{% url 'user_ips' %}" id="topnav-dashboard"
+                        {% if 'activities' in url_name %}active{% endif %}" href="{% url 'activities' %}" id="topnav-dashboard"
                        role="button">
-                        <span key="t-dashboards">User IP's</span>
+                        <span key="t-dashboards">Activity History</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link arrow-none
-                        {% if 'customers' in url_name %}active{% endif %}" href="{% url 'customers' %}" id="topnav-dashboard"
+                        {% if 'blocked' in url_name %}active{% endif %}" href="{% url 'blocked_users' %}" id="topnav-dashboard"
                        role="button">
-                        <span key="t-dashboards">Customers</span>
+                        <span key="t-dashboards">Blocked History</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link arrow-none
-                        {% if 'settings' in url_name %}active{% endif %}" href="{% url 'settings' %}" id="topnav-dashboard"
+                        {% if 'keywords' in url_name %}active{% endif %}" href="{% url 'keywords' %}" id="topnav-dashboard"
                        role="button">
-                        <span key="t-dashboards">Settings</span>
+                        <span key="t-dashboards">Keywords</span>
                     </a>
                 </li>
             </ul>

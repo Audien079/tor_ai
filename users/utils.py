@@ -2,7 +2,7 @@ import re
 from datetime import datetime, timedelta
 from django.db.utils import IntegrityError
 from django.utils.timezone import now
-from users.models import UserIP
+from users.models import UserIP, SearchLog
 
 
 def is_valid_email(email):
@@ -19,7 +19,7 @@ def is_valid_email(email):
 
 class TrackUserIP:
     @staticmethod
-    def track_ip(request):
+    def track_ip(request, query):
         """
         Tracks the IP address of a request.
         """
@@ -51,7 +51,11 @@ class TrackUserIP:
                 # Update the last request time
                 user_ip.last_request_time = current_time
                 user_ip.save()
+
+                # Creates the search log for the keyword
+                SearchLog.objects.create(user_ip=user_ip, keyword=query)
                 return False
+
             except IntegrityError:
                 pass
 
